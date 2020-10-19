@@ -4,7 +4,7 @@ public class Main {
         Email employee1 = new Email("April", "Howard");
         employee1.setAlternateEmail("app@gmail.com:");
 
-        System.out.println(employee1.getAlternateEmail());
+        System.out.println(employee1.showInfo());
 
     }
 }
