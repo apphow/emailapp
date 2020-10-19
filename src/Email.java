@@ -11,9 +11,11 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private int mailboxCapacity;
+    private String email;
+    private int mailboxCapacity = 500;
     private int defaultPasswordLength = 10;
     private String alternateEmail;
+    private String companySuffix = "aaacompany.com";
 
     //Constructor to receive the firstname and lastName
     public Email(String firstName, String lastName) {
@@ -25,8 +27,14 @@ public class Email {
         this.department = setDepartment();
         System.out.println("Department is : " + this.department);
 
+        // Call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
         System.out.println("Your password is: " + this.password);
+
+        // Combine elements to generate email (firstName.lastName
+        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + companySuffix;
+        System.out.println("Your email is: " + email);
+
 
     }
 
@@ -62,12 +70,25 @@ public class Email {
         return new String(password);
 
     }
-
-
-}
-
     // Set the mailbox capacity
-
+    // encapsulation. public so we can set some properties and
+    // we're hiding the actual properties.
+    public void setMailboxCapacity(int capacity) {
+        this.mailboxCapacity = capacity;
+    }
     // Set the alternate email
+    // no ambiguity between the class level and local variable,
+    // so we don't need this, but it's best practice to use it.
+    public void setAlternateEmail(String altEmail) {
+     // class level(alternateEmail     // local variable(altEmail);
+        this.alternateEmail = altEmail;
+    }
 
     // Change the password
+    public void changePassword(String password) {
+        this.password = password;
+    }
+}
+
+
+
